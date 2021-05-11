@@ -180,7 +180,7 @@ paragraph for more details.
     coordinate reference systems.
 
     This is the same as :c:func:`proj_create_crs_to_crs` except that the source and
-    target CRS are passed as PJ* objects which must of the CRS variety.
+    target CRS are passed as PJ* objects which must be of the CRS variety.
 
     :param `options`: should be set to NULL currently.
 
@@ -268,7 +268,7 @@ Coordinate transformation
         3. of length one, i.e. a constant, which will be treated as a fully
            populated array of that constant value
 
-    .. note:: Even though he coordinate components are named :c:data:`x`, :c:data:`y`,
+    .. note:: Even though the coordinate components are named :c:data:`x`, :c:data:`y`,
               :c:data:`z` and :c:data:`t`, axis ordering of the to and from CRS
               is respected. Transformations exhibit the same behavior
               as if they were gathered in a :c:type:`PJ_COORD` struct.
@@ -783,6 +783,17 @@ Setting custom I/O functions
 
 .. doxygenfunction:: proj_context_set_sqlite3_vfs_name
    :project: doxygen_api
+   
+.. c:function:: void proj_context_set_search_paths (PJ_CONTEXT *ctx , int count_paths, const char* const* paths)
+
+    Sets the resource files search paths.
+
+    :param ctx: Threading context.
+    :type ctx: :c:type:`PJ_CONTEXT` *
+    :param `count_paths`: Number of paths.
+    :type `count_paths`: `int`
+    :param `paths`: Array of paths.
+    :type `paths`: `const char* const*`
 
 
 Network related functionality
