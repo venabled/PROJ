@@ -36,7 +36,6 @@ message(STATUS "Requiring C${CMAKE_C_STANDARD}")
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 message(STATUS "Requiring C${CMAKE_C_STANDARD} - done")
-
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
@@ -129,14 +128,14 @@ if(NOT EXE_SQLITE3)
   message(SEND_ERROR "sqlite3 binary not found!")
 endif()
 
-find_package(Sqlite3 REQUIRED)
-if(NOT SQLITE3_FOUND)
+find_package(SQLite3 REQUIRED)
+if(NOT SQLite3_FOUND)
   message(SEND_ERROR "sqlite3 dependency not found!")
 endif()
 
 # Would build and run with older versions, but with horrible performance
 # See https://github.com/OSGeo/PROJ/issues/1718
-if("${SQLITE3_VERSION}" VERSION_LESS "3.11")
+if("${SQLite3_VERSION}" VERSION_LESS "3.11")
   message(SEND_ERROR "sqlite3 >= 3.11 required!")
 endif()
 
@@ -149,6 +148,7 @@ mark_as_advanced(ENABLE_TIFF)
 set(TIFF_ENABLED FALSE)
 if(ENABLE_TIFF)
   find_package(TIFF REQUIRED)
+message("TIFFLIBZ: ${TIFF_LIBRARIES}  ")
   if(TIFF_FOUND)
     set(TIFF_ENABLED TRUE)
   else()
