@@ -412,7 +412,7 @@ if(CURL_ENABLED)
   target_include_directories(proj PRIVATE ${CURL_INCLUDE_DIR})
   target_link_libraries(proj
     PRIVATE
-      ${CURL_LIBRARY}
+      CURL::libcurl
       $<$<CXX_COMPILER_ID:MSVC>:ws2_32>
       $<$<CXX_COMPILER_ID:MSVC>:wldap32>
       $<$<CXX_COMPILER_ID:MSVC>:advapi32>
